@@ -10,9 +10,9 @@
     apt_repo_keys_to_add:
       # XXX bintray repo is broken.
       # https://community.openhab.org/t/the-repository-https-dl-bintray-com-openhab-apt-repo2-stable-release-is-not-signed-raspberry-pi-3/60047/17
-      - https://openhab.jfrog.io/openhab/openhab-linuxpkg
+      - https://bintray.com/user/downloadSubjectPublicKey?username=openhab
     apt_repo_to_add:
-      - deb https://dl.bintray.com/openhab/apt-repo2 stable main
+      - deb https://openhab.jfrog.io/openhab/openhab-linuxpkg stable main
     java_packages: "{% if ansible_os_family == 'FreeBSD' %}[ 'java/openjdk8-jre' ]{% elif ansible_os_family == 'Debian' %}[ 'openjdk-8-jdk' ]{% endif %}"
 
     openhab_extra_groups:
@@ -49,3 +49,8 @@
         state: absent
         content: |
           org.eclipse.smarthome.core.localeprovider:language=en
+    flags_freebsd: ""
+    flags_debian: |
+      EXTRA_JAVA_OPTS=""
+      OPENHAB_HTTP_PORT=8080
+    openhab_flags: "{% if ansible_os_family == 'Debian' %}{{ flags_debian }}{% elif ansible_os_family == 'FreeBSD' %}{{ flags_freebsd }}{% endif %}"
