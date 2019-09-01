@@ -2,5 +2,14 @@
 
 - name: Install openhab
   pkgng:
-    name: openhab
+    name: "{{ openhab_package_name }}"
     state: present
+
+- name: Create rc.conf.d/openhab2
+  template:
+    src: FreeBSD.rc.d.j2
+    mode: 0644
+    dest: "/etc/rc.conf.d/{{ openhab_service }}"
+    validate: sh -n %s
+  notify:
+    - Restart openhab
