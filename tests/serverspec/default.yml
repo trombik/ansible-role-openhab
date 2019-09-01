@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  roles:
+    - ansible-role-openhab
+  vars:
+    openhab_config: ""

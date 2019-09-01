@@ -1,0 +1,6 @@
+---
+
+- name: Restart openhab
+  service:
+    name: openhab
+    state: restarted

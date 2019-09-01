@@ -1,0 +1,6 @@
+---
+
+- name: Install openhab
+  pkgng:
+    name: openhab
+    state: present

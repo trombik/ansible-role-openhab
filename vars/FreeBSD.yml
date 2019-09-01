@@ -1,0 +1,3 @@
+---
+__openhab_db_dir: /var/db/openhab
+__openhab_conf_dir: /usr/local/etc/openhab

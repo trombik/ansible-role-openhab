@@ -1,0 +1,37 @@
+---
+# tasks file for ansible-role-openhab
+
+- include_vars: "{{ ansible_os_family }}.yml"
+
+- include: "install-{{ ansible_os_family }}.yml"
+
+- name: Create log directory
+  file:
+    path: "{{ openhab_log_dir }}"
+    mode: 0755
+    owner: "{{ openhab_user }}"
+    group: "{{ openhab_group }}"
+    state: directory
+  notify: Restart openhab
+
+- name: Create db directory
+  file:
+    path: "{{ openhab_db_dir }}"
+    mode: 0755
+    owner: "{{ openhab_user }}"
+    group: "{{ openhab_group }}"
+    state: directory
+  notify: Restart openhab
+
+- name: Create openhab.conf
+  template:
+    src: openhab.conf.j2
+    dest: "{{ openhab_conf_file }}"
+    validate: echo %s
+  notify: Restart openhab
+
+- name: Start openhab
+  service:
+    name: "{{ openhab_service }}"
+    enabled: true
+    state: started

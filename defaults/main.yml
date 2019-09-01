@@ -1,0 +1,9 @@
+---
+openhab_user: openhab
+openhab_group: openhab
+openhab_log_dir: /var/log/openhab
+openhab_db_dir: "{{ __openhab_db_dir }}"
+openhab_service: openhab
+openhab_conf_dir: "{{ __openhab_conf_dir }}"
+openhab_conf_file: "{{ __openhab_conf_dir }}/openhab.conf"
+openhab_flags: ""
