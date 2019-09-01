@@ -13,3 +13,8 @@
     validate: sh -n %s
   notify:
     - Restart openhab
+
+- name: Install openhab_extra_packages
+  apt:
+    name: "{{ openhab_extra_packages }}"
+    state: present
