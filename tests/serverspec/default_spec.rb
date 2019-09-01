@@ -50,7 +50,6 @@ describe user(user) do
   end
 end
 
-
 config_files.each do |f|
   describe file("#{config_dir}/#{f}") do
     it { should exist }
