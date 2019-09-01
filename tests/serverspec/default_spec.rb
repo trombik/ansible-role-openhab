@@ -9,7 +9,7 @@ extra_groups = ["dialout"]
 ports   = [8080]
 log_dir = "/var/log/openhab2"
 db_dir  = "/var/lib/openhab2"
-config_dir = "/etc/openhab2/openhab.conf"
+config_dir = "/etc/openhab2"
 config_files = %w[
   services/addons.cfg
   services/basicui.cfg
@@ -88,6 +88,17 @@ when "freebsd"
     it { should be_owned_by default_user }
     it { should be_grouped_into default_group }
     it { should be_mode 644 }
+    its(:content) { should match(/# Managed by ansible/) }
+  end
+when "ubuntu"
+  describe file("/etc/default/#{service}") do
+    it { should exist }
+    it { should be_file }
+    it { should be_mode 644 }
+    it { should be_owned_by default_user }
+    it { should be_grouped_into default_group }
+    its(:content) { should match(/# Managed by ansible/) }
+    its(:content) { should match(/OPENHAB_HTTP_PORT=8080/) }
   end
 end
 
