@@ -8,9 +8,38 @@ None
 
 # Role Variables
 
-| variable | description | default |
+| Variable | Description | Default |
 |----------|-------------|---------|
+| `openhab_user` | | `openhab` |
+| `openhab_group` | | `openhab` |
+| `openhab_extra_groups` | | `[]` |
+| `openhab_log_dir` | | `/var/log/openhab` |
+| `openhab_db_dir` | | `{{ __openhab_db_dir }}` |
+| `openhab_service` | | `{{ __openhab_service }}` |
+| `openhab_package_name` | | `{{ __openhab_package_name }}` |
+| `openhab_extra_packages` | | `[]` |
+| `openhab_conf_dir` | | `{{ __openhab_conf_dir }}` |
+| `openhab_conf_file` | | `{{ __openhab_conf_dir }}/openhab.conf` |
+| `openhab_flags` | | `""` |
 
+
+## Debian
+
+| Variable | Default |
+|----------|---------|
+| `__openhab_package_name` | `openhab2` |
+| `__openhab_service` | `openhab2` |
+| `__openhab_db_dir` | `/var/lib/openhab2` |
+| `__openhab_conf_dir` | `/etc/openhab2` |
+
+## FreeBSD
+
+| Variable | Default |
+|----------|---------|
+| `__openhab_package_name` | `openhab2` |
+| `__openhab_service` | `openhab2` |
+| `__openhab_db_dir` | `/var/db/openhab2` |
+| `__openhab_conf_dir` | `/usr/local/etc/openhab2` |
 
 # Dependencies
 
