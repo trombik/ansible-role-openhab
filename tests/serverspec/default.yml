@@ -49,6 +49,9 @@
         state: absent
         content: |
           org.eclipse.smarthome.core.localeprovider:language=en
+      - name: scripts/demo.script
+        content: |
+          say("Demo script has been called!")
     flags_freebsd: ""
     flags_debian: |
       EXTRA_JAVA_OPTS=""
