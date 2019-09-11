@@ -18,6 +18,7 @@ config_files = %w[
   services/rrd4j.cfg
   services/runtime.cfg
 ]
+xtend_files = %w[scripts/demo.script]
 default_user = "root"
 default_group = "root"
 
@@ -58,6 +59,17 @@ config_files.each do |f|
     it { should be_grouped_into group }
     it { should be_mode 640 }
     its(:content) { should match(/# Managed by ansible/) }
+  end
+end
+
+xtend_files.each do |f|
+  describe file("#{config_dir}/#{f}") do
+    it { should exist }
+    it { should be_file }
+    it { should be_owned_by user }
+    it { should be_grouped_into group }
+    it { should be_mode 640 }
+    its(:content) { should match(%r{// Managed by ansible}) }
   end
 end
 
