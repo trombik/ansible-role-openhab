@@ -49,6 +49,8 @@
   with_items: "{{ openhab_configs }}"
   when:
     - "('state' in item and item.state == 'present') or not ('state' in item)"
+  notify:
+    - Restart openhab
 
 - name: Remove configuration files
   file:
@@ -58,6 +60,8 @@
   when:
     - "'state' in item"
     - "item.state == 'absent'"
+  notify:
+    - Restart openhab
 
 - name: Start openhab
   service:
