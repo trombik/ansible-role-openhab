@@ -41,7 +41,7 @@ dict of the following keys and values.
 |----------|---------|
 | `__openhab_user` | `openhab` |
 | `__openhab_group` | `openhab` |
-| `__openhab_log_dir` | `/var/log/openhab` |
+| `__openhab_log_dir` | `/var/log/openhab2` |
 | `__openhab_package_name` | `openhab2` |
 | `__openhab_service` | `openhab2` |
 | `__openhab_db_dir` | `/var/lib/openhab2` |
@@ -53,7 +53,7 @@ dict of the following keys and values.
 |----------|---------|
 | `__openhab_user` | `openhab` |
 | `__openhab_group` | `openhab` |
-| `__openhab_log_dir` | `/var/log/openhab` |
+| `__openhab_log_dir` | `/var/log/openhab2` |
 | `__openhab_package_name` | `openhab2` |
 | `__openhab_service` | `openhab2` |
 | `__openhab_db_dir` | `/var/db/openhab2` |
